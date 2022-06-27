@@ -1,0 +1,152 @@
+.container {
+    border: 1px solid #120a3d;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.header {
+    background-color: #120a3d;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    height: 60px;
+}
+
+#case-column {
+    margin-left: 20px;
+    margin-bottom: 20px;
+  
+}
+
+#contact-column {
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+}
+
+
+h1 {
+    background-color: rgba(1, 11, 48, 0.871);
+    color: white;
+    font-size: large;
+    padding: 0px;
+}
+
+table {
+    table-layout: auto;
+    width: 100%;
+
+
+}
+
+
+td.label{
+    padding-top: 25px;
+    vertical-align: top;
+}
+
+div.contact {
+    background-color: rgb(214, 225, 236);
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+div.effective-date {
+    background-color: rgb(214, 225, 236);
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+
+input {
+
+    border: 1px solid #120a3d;
+    border-radius: 35px;
+    padding: 10px 7px 10px 7px;
+    width: 100%;
+    
+    vertical-align: top;
+    
+
+}
+
+textarea {
+    border: 1px solid #120a3d;
+    border-radius: 10px;
+    width: 100%;
+    height: 100px;
+    padding: 10px 7px 10px 7px;
+}
+
+.alert-danger{
+    margin-top:20px;
+    width: 100%;
+}
+
+.div-description {
+    margin-top: 10px;
+    width: 100%;
+}
+
+label {
+    padding-bottom: 15px;
+}
+
+mat-form-field {
+    width: 80%;
+    
+    
+}
+
+mat-form-field.description {
+    width: 100%;
+    
+}
+
+mat-select {
+    border: 1px solid #120a3d;
+    border-radius: 35px;
+    padding: 10px 7px 10px 7px;
+    width: 105%;
+}
+
+mat-datepicker-toggle {
+    position: absolute;
+    margin-left: 20px;
+    padding-top: 19px;
+
+}
+
+mat-radio-button {
+    margin-right: 10px;
+    padding-bottom: 10px;
+    padding-top:10px;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+
+
+.text-center {
+    margin: 30px;
+    padding-bottom: 30px;
+}
+
+.btn-danger {
+    margin-right: 20px;
+}
+
+.btn-primary {
+    margin-left: 20px;
+}
+
+.success-msg{
+    margin-top: 20px;
+    width: 100%;
+}

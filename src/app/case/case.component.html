@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="row">
+            <div class="header">
+                Create Case
+            </div>
+        </div>
+
+        <!-- success message here -->
+        <div class="w-100"> </div>
+        <div class="success-msg" *ngIf="showSuccessMsg">
+            <p class="alert alert-success">
+                Case successfully created.
+            </p>
+        </div>
+        <!-- ends success message -->
+
+        <div class="row">
+
+            <div class="col no-gutters" id="case-column">
+                <table>
+
+                    <tr>
+                        <td class="label">Case Status </td>
+                        <td class="case-input">
+                            <mat-form-field class="case-input">
+                                <mat-select formControlName="caseStatus" name="status">
+                                    <mat-option *ngFor="let casestatus of casestatus" [value]="casestatus.value">
+                                        {{ casestatus.name }}
+                                    </mat-option>
+                                </mat-select>
+                                <div *ngIf="parentForm.controls['caseStatus'].invalid && (parentForm.controls['caseStatus'].dirty || parentForm.controls['caseStatus'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="parentForm.controls['caseStatus'].errors?.['required']">
+                                        Case Status is required
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Case Title</td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput id="caseTitle" type="text" class='form-control '
+                                    formControlName="caseTitle" required />
+                                <div *ngIf="parentForm.controls['caseTitle'].invalid && (parentForm.controls['caseTitle'].dirty || parentForm.controls['caseTitle'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="parentForm.controls['caseTitle'].errors?.['required']">
+                                        Case Title is required
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Customer Name</td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput id="customerName" type="text" formControlName="customerName" required />
+                                <div *ngIf="parentForm.controls['customerName'].invalid && (parentForm.controls['customerName'].dirty || parentForm.controls['customerName'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="parentForm.controls['customerName'].errors?.['required']">
+                                        Customer's name is required
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Bill Account No.</td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput id="billAccountNO" type="text" formControlName="billAccountNo"
+                                    required />
+                                <div *ngIf="parentForm.controls['billAccountNo'].invalid && (parentForm.controls['billAccountNo'].dirty || parentForm.controls['billAccountNo'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="parentForm.controls['billAccountNo'].errors?.['required']">
+                                        Bill account number is required
+                                    </div>
+                                    <div *ngIf="parentForm.controls['billAccountNo'].errors?.['pattern']">
+                                        Bill account number must be valid
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Id Type</td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput id="idType" type="text"  formControlName="idType"
+                                    [readonly]="true" />
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Customer ID</td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput id="customerId" type="text" formControlName="customerId" required />
+                                <div *ngIf="parentForm.controls['customerId'].invalid && (parentForm.controls['customerId'].dirty || parentForm.controls['customerId'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="parentForm.controls['customerId'].errors?.['required']">
+                                        Customer ID is required
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Case Source ID</td>
+                        <td>
+                            <mat-form-field>
+                                <mat-select formControlName="caseSourceId" name="casesource">
+                                    <mat-option *ngFor="let casesource of casesource" [value]="casesource.value">
+                                        {{ casesource.name }}
+                                    </mat-option>
+                                </mat-select>
+                                <div *ngIf="parentForm.controls['caseSourceId'].invalid && (parentForm.controls['caseSourceId'].dirty || parentForm.controls['caseSourceId'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="parentForm.controls['caseSourceId'].errors?.['required']">
+                                        Case source ID is required
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Service ID/NO</td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput id="serviveIdNO" type="text" formControlName="serviceIdNo" required />
+                                <div *ngIf="parentForm.controls['serviceIdNo'].invalid && (parentForm.controls['serviceIdNo'].dirty || parentForm.controls['serviceIdNo'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="parentForm.controls['serviceIdNo'].errors?.['required']">
+                                        Service ID number
+                                    </div>
+                                </div>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Next Best Action</td>
+                        <td>
+                            <mat-radio-group formControlName="nextBestAction" name="nextBestAction">
+                                <mat-radio-button value="assurance"> Assurance </mat-radio-button>
+                                <mat-radio-button value="bill"> Bill</mat-radio-button>
+                                <mat-radio-button value="none"> None</mat-radio-button>
+                            </mat-radio-group>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col no-gutters" id="contact-column">
+                <div class="w-100"></div>
+                <!-- div table contact starts here -->
+
+                <div class="contact">
+                    <table id="table-contact">
+                        <tr>
+                            <td class="label">Contact Name</td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput id="contactName" type="text" formControlName="contactName"
+                                        required />
+                                    <div *ngIf="parentForm.controls['contactName'].invalid && (parentForm.controls['contactName'].dirty || parentForm.controls['contactName'].touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="parentForm.controls['contactName'].errors?.['required']">
+                                            COntact name is required
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Phone Number</td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput id="phoneNumber" type="text" formControlName="phoneNumber"
+                                        required />
+                                    <div *ngIf="parentForm.controls['phoneNumber'].invalid && (parentForm.controls['phoneNumber'].dirty || parentForm.controls['phoneNumber'].touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="parentForm.controls['phoneNumber'].errors?.['required']">
+                                            Phone number is required
+                                        </div>
+                                        <div *ngIf="parentForm.controls['phoneNumber'].errors?.['pattern']">
+                                            Phone number must be valid
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Email</td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput id="email" type="email" formControlName="email" required />
+                                    <mat-hint align="start">Eg. pat@example.com</mat-hint>
+                                    <div *ngIf="parentForm.controls['email'].invalid && (parentForm.controls['email'].dirty || parentForm.controls['email'].touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="parentForm.controls['email'].errors?.['required']">
+                                            Email is required
+                                        </div>
+                                        <div *ngIf="parentForm.controls['email'].errors?.['email']">
+                                            Email must be valid
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- div table contact ends here -->
+
+                <div class="w-100"></div>
+                <div class="div-description">
+                    <mat-form-field class="description">
+                        <label> Description / Remark</label>
+
+                        <textarea matInput id="description" #message maxlength="3000"
+                            formControlName="description_remark" required>
+                        </textarea>
+                        <mat-hint align="end"> {{message.value.length}}/3000 characters</mat-hint>
+                        <div *ngIf="parentForm.controls['description_remark'].invalid && (parentForm.controls['description_remark'].dirty || parentForm.controls['description_remark'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="parentForm.controls['description_remark'].errors?.['required']">
+                                Description or remark is required
+                            </div>
+                        </div>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="w-100"></div>
+
+                <!-- div date starts here -->
+                <div class="effective-date">
+                    <mat-form-field class="date" appearance="standard">
+                        <label class="date" for="effectiveDate">Effective date</label>
+                        <input matInput id="effectiveDate" [matDatepicker]="picker" formControlName="effectiveDate"
+                            required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <div *ngIf="parentForm.controls['effectiveDate'].invalid && (parentForm.controls['effectiveDate'].dirty || parentForm.controls['effectiveDate'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="parentForm.controls['effectiveDate'].errors?.['required']">
+                                Date is required
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <!-- div date ends here -->
+
+            </div>
+
+        </div>
+    </div>
+    <!-- div button starts here -->
+    <div class="text-center">
+        <button class="btn btn-danger" type="button" (click)="resetForm()"> Clear </button>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!parentForm.valid"> Submit</button>
+    </div>
+    <!-- div button ends here -->
+
+</form>
+
+</html>
